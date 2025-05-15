@@ -190,7 +190,8 @@ if __name__ == "__main__":
 
     extra = {}
     for key in ('Nodes', 'Walltime', 'Charge', 'QOS', 'Constraint'):
-        extra[key] = getattr(args, key)
+        if key in dir(args):
+            extra[key] = getattr(args, key)
 
     MyWorkflow = Workflow(
         Runner=runner,
